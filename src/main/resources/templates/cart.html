@@ -1,0 +1,31 @@
+<!DOCTYPE HTML>
+<html lang="en" xmlns:layout="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" layout:decorate="~{fragments/main_layout}">
+<head>
+    <title>E-Shop Shopping Cart</title>
+</head>
+<body>
+<div layout:fragment="content" class="container">
+
+    <div class="jumbotron">
+        <h1>Váš košík <span th:if="${products.size()} == 0"> - je prázdný!</span></h1>
+    </div>
+
+    <div th:if="${products.size()} > 0">
+        <div th:each="product: ${products}">
+            <h2 th:text="${product.getKey().getName()}">Product name</h2>
+            <h2 th:text="${product.getValue()}">Quantity</h2>
+
+            <a th:href="@{'/cart/removeProduct/' + ${product.getKey().getId()}}">Snížit počet</a>
+
+        </div>
+
+        <div>
+            <p>Celková cena: <span th:text="${total}"></span></p>
+        </div>
+        <div>
+            <a th:href="@{'/cart/checkout'}">Koupit</a>
+        </div>
+    </div>
+</div>
+</body>
+</html>

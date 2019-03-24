@@ -1,0 +1,22 @@
+<!DOCTYPE HTML>
+<html lang="en" xmlns:layout="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" layout:decorate="~{fragments/main_layout}">
+<head>
+    <title>E-Shop Homepage</title>
+</head>
+<body>
+<div layout:fragment="content" class="container">
+
+    <div class="jumbotron">
+        <h1>E-Shop demo</h1>
+    </div>
+
+
+    <div th:each="product: ${products}">
+        <h2 th:text="${product.name}">Product name</h2>
+        <a class="btn btn-success" th:href="@{'/cart/addProduct/' + ${product.id}}">Buy</a>
+        <a class="btn btn-success" th:href="@{'/product/detail/' + ${product.id}}">Detail</a>
+        <a></a>
+    </div>
+</div>
+</body>
+</html>
