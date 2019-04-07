@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<div id="products" >
+
+</div>
+
+<script type="javascript">
+
+    xmlhttp.onreadystatechange = function() {
+        xmlhttp = new XMLHttpRequest();
+        if (this.readyState == 4 && this.status == 200) {
+            myObj = JSON.parse(this.responseText);
+            txt = "";
+            for (x in myObj) {
+                txt += myObj[x].name ;
+            }
+            document.getElementById("products").innerHTML = txt;
+        }
+    };
+    xmlhttp.open("POST", "product.html", true);
+
+</script>
+
+</body>
+</html>
